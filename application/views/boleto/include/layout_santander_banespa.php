@@ -1,3 +1,12 @@
+<?php
+/**
+ * 	@author Solluzi Tecnologia
+ * 	@data 20/12/2014
+ *
+ *	Este layout é especificamente utilizado para o boleto do santander, como o nome já sugere
+ */
+?>
+
 <!DOCTYPE HTML PUBLIC '-//W3C//Dtd HTML 4.0 transitional//EN'>
 <HTML>
 	<HEAD>

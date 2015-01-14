@@ -1,4 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * Class Boleto
+ * Classe que recebe e processa os dados informados
+ */
+
 class Boleto
 {
 

@@ -7,7 +7,9 @@
  */
 class Treinamento extends CI_Controller
 {
-    
+	/**
+	 * Metodo gerador do boleto
+	 */
     public function gerarBoleto()
     {   
     	$this->load->library('boleto');
@@ -16,16 +18,16 @@ class Treinamento extends CI_Controller
         $dias_de_prazo_para_pagamento   = 10; 
     	$taxa_boleto                    = 1.50;
     	$data_venc                      = date("d/m/Y", time() + ($dias_de_prazo_para_pagamento * 86400));  // Prazo de X dias OU informe data: "13/04/2006";
-    	$valor_cobrado                  = 149,90; // Valor - REGRA: Sem pontos na milhar e tanto faz com "." ou "," ou com 1 ou 2 ou sem casa decimal
+    	$valor_cobrado                  = '149,90'; // Valor - REGRA: Sem pontos na milhar e tanto faz com "." ou "," ou com 1 ou 2 ou sem casa decimal
     	$valor_cobrado                  = str_replace(",", ".",$valor_cobrado);
     	$valor_boleto                   = number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
     	$nosso_numero                   = 777777777;
     	
     	$this->data['dadosboleto']["nosso_numero"]          = $nosso_numero;  // Nosso numero sem o DV - REGRA: M�ximo de 7 caracteres!
-    	$this->data['dadosboleto']["numero_documento"]      = $numero_doc;	// Num do pedido ou nosso numero
+    	$this->data['dadosboleto']["numero_documento"]      = $nosso_numero;	// Num do pedido ou nosso numero
     	$this->data['dadosboleto']["data_vencimento"]       = $data_venc; // Data de Vencimento do Boleto - REGRA: Formato DD/MM/AAAA
-    	$this->data['dadosboleto']["data_documento"]        = $data_documento; // Data de emiss�o do Boleto
-    	$this->data['dadosboleto']["data_processamento"]    = $data_documento; // Data de processamento do boleto (opcional)
+    	$this->data['dadosboleto']["data_documento"]        = date('d/m/Y'); // Data de emiss�o do Boleto
+    	$this->data['dadosboleto']["data_processamento"]    = date('d/m/Y'); // Data de processamento do boleto (opcional)
     	$this->data['dadosboleto']["valor_boleto"]          = $valor_boleto; 	// Valor do Boleto - REGRA: Com v�rgula e sempre com duas casas depois da virgula
     	
     	// DADOS DO SEU CLIENTE
